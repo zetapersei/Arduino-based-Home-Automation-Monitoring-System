@@ -10,7 +10,6 @@
 DS3231  rtc(SDA, SCL);
 
 Time t;
-int orario_on;
 
 String telefonNumber = "00000000000";
 String atCmdSetText = "AT+CMGF=1";
@@ -105,11 +104,10 @@ void loop()
   
   // Serial.print(t.hour, DEC);
   
-  orario_on = t.hour;
   
   switch (alarm1Value) {
       case LOW:
-        if ( orario_on >= HOUR_INITIAL_TIME && orario_on < HOUR_END_TIME && t.min > MIN_INITIAL_TIME && t.min < MIN_END_TIME) 
+        if ( t.hour >= HOUR_INITIAL_TIME && t.hour < HOUR_END_TIME && t.min > MIN_INITIAL_TIME && t.min < MIN_END_TIME) 
            {
       
             Serial.print(atCmdSendSms + VIRGO + telefonNumber + VIRGO + CR );
@@ -122,7 +120,7 @@ void loop()
         
         break;
       case HIGH:
-          if ( orario_on <= HOUR_INITIAL_TIME && orario_on > HOUR_END_TIME && t.min < MIN_INITIAL_TIME && t.min > MIN_END_TIME) 
+          if ( t.hour <= HOUR_INITIAL_TIME && t.hour > HOUR_END_TIME && t.min < MIN_INITIAL_TIME && t.min > MIN_END_TIME) 
            {
       
             Serial.print(atCmdSendSms + VIRGO + telefonNumber + VIRGO + CR );
