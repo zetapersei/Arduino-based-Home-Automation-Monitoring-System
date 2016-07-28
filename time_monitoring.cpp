@@ -104,8 +104,85 @@ void loop()
   
   // Serial.print(t.hour, DEC);
   
+  if (alarm1Value == HIGH) {
+
+	      digitalWrite(led1_Pin, HIGH );
+
+
+
+	      Serial.println("ATD"+telefonNumber+";");
+	      delay(25000); // Ring for four times
+	      Serial.println("ATH");
+
+		  while  (!alarm1.update()){
+			;    }
+		  delay(endAlarm);
+
+		  Serial.println("ATD"+telefonNumber+";");
+		  	      delay(25000); // Ring for four times at alarm release
+	                             // only for power monitoring
+		  	      Serial.println("ATH");
+
+}
+
+else {
+	      digitalWrite(led1_Pin, LOW );
+	  }
+
+
+if (alarm2Value == HIGH) {
+
+			  digitalWrite(led2_Pin, HIGH );
+
+
+			  Serial.println("ATD"+telefonNumber+";");
+			  delay(30000); // ring for six times
+			  Serial.println("ATH");
+
+			   	while  (!alarm2.update()){
+			   				;    }
+			   	delay(endAlarm);
+	  }
+
+else {
+	  	      digitalWrite(led2_Pin, LOW );
+	  }
+
+if (alarm3Value == HIGH) {
+
+	digitalWrite(led3_Pin, HIGH );
+
+
+
+	Serial.println("ATD"+telefonNumber+";");
+	delay(50000); // ring for ten times
+	Serial.println("ATH");
+
+			    while  (!alarm3.update()){
+			    ;    }
+			    delay(endAlarm);
+	  	   }
+else {
+	  	  	digitalWrite(led3_Pin, LOW );
+	  	   }
+
+
+
+/*
+if (alarm4Value == HIGH) {
+Serial.println("ATD"+telefonNumber+";");
+delay(23500); // ring four times
+Serial.println("ATH");
+	  		digitalWrite(led4_Pin, HIGH );
+	  	   }
+else {
+	  	  	digitalWrite(led4_Pin, LOW );
+	  	  }
+*/
+}
+
   
-  switch (alarm1Value) {
+/*  switch (alarm1Value) {
       case LOW:
         if ( t.hour >= HOUR_INITIAL_TIME && t.hour < HOUR_END_TIME && t.min > MIN_INITIAL_TIME && t.min < MIN_END_TIME) 
            {
@@ -136,4 +213,4 @@ void loop()
         }
  
   
-}
+} */
